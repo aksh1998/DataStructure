@@ -1,0 +1,22 @@
+public static Node removeDuplicates (Node head) {
+    Dictionary<int, int> dict = new Dictionary<int, int> ();
+    Node temp = head;
+    Node prev = null;
+    while (temp != null) {
+        if (!dict.ContainsKey (temp.data)) {
+            dict.Add (temp.data, 1);
+            if (prev == null) {
+                prev = temp;
+            } else {
+                prev.next = temp;
+                prev = temp;
+            }
+        }
+        if (temp.next == null) {
+            prev.next = null;
+            break;
+        }
+        temp = temp.next;
+    }
+    return head;
+}
