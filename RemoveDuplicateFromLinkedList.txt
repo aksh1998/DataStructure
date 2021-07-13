@@ -1,3 +1,7 @@
+Link: https://leetcode.com/problems/remove-duplicates-from-sorted-list,
+
+->Using Dictionary
+
 public static Node removeDuplicates (Node head) {
     Dictionary<int, int> dict = new Dictionary<int, int> ();
     Node temp = head;
@@ -19,4 +23,27 @@ public static Node removeDuplicates (Node head) {
         temp = temp.next;
     }
     return head;
+}
+
+---------------------------------------------------------------------------------------------------
+
+-> Without Dictionary
+
+public class Solution {
+    public ListNode DeleteDuplicates(ListNode head) {
+        Dictionary<int, int> dict = new Dictionary<int, int> ();
+    ListNode temp = head;
+    ListNode next_next = null;
+        while (temp!= null && temp.next != null)
+        {
+            if (temp.val == temp.next.val)
+            {
+                next_next = temp.next.next;
+                temp.next = next_next;
+            }
+            else
+                temp = temp.next;
+        }
+    return head;
+    }
 }
